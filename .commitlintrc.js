@@ -1,7 +1,7 @@
-const base = require('@srclaunch/dx/.commitlintrc');
+import base from '@srclaunch/dx/.commitlintrc';
 
-module.exports = {
-  "commitlint": {
-   ...base
-  }
-}
+export default {
+  commitlint: {
+    ...base,
+  },
+};
