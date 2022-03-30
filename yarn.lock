@@ -1934,7 +1934,7 @@ __metadata:
   dependencies:
     "@srclaunch/cli": ^0.1.83
     "@srclaunch/dx": ^0.1.18
-    "@srclaunch/types": ^0.1.21
+    "@srclaunch/types": ^0.1.23
     "@types/express": ^4.17.13
     "@types/jest": ^27.4.1
     "@types/luxon": ^2.3.1
@@ -1983,10 +1983,10 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@srclaunch/types@npm:^0.1.21":
-  version: 0.1.21
-  resolution: "@srclaunch/types@npm:0.1.21"
-  checksum: acee0023621bd2fb3e252b6822d610733cce869dddd08b1a72523b1393cab645a37413fe79fe926643ac1919ed797cb2b9a1915a676b779bc7235d376cb7e0dd
+"@srclaunch/types@npm:^0.1.23":
+  version: 0.1.23
+  resolution: "@srclaunch/types@npm:0.1.23"
+  checksum: 768778fe104c1fef400e35b8440bc1e7755e2d255c2a3c68d9e025f5a5d9cce95f3cef5e0282d55fc605ce76cb70e3af8c855da54d1cd96ef6384e17db8a4994
   languageName: node
   linkType: hard
 
