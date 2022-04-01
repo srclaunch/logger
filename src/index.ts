@@ -1,8 +1,4 @@
-// import { getLoggerMiddleware } from './lib/express-middleware.js';
-import Logger from './lib/logger.js';
-import { CloudWatchConfig } from './types/cloudwatch';
-import { LoggerConfig } from './types/index';
-// export { getLoggerMiddleware };
-export default Logger;
-export { Logger };
-export type { CloudWatchConfig, LoggerConfig };
+import { getExpressMiddleware } from './lib/express-middleware.js';
+export { Logger } from './lib/logger.js';
+export { type CloudWatchConfig } from './types/cloudwatch';
+export { type LoggerConfig } from './types/index';

@@ -1,26 +1,26 @@
 import {
-  Model,
-  ModelField,
   HttpRequest,
   HttpResponse,
   ISO8601String,
+  Model,
+  ModelField,
 } from '@srclaunch/types';
 // import { ExceptionObject } from '@srclaunch/exceptions';
 
 type CommonEventProps = {
-  created: ISO8601String;
-  environment: string;
-  id: string;
-  pii?: boolean;
+  readonly created: ISO8601String;
+  readonly environment: string;
+  readonly id: string;
+  readonly pii?: boolean;
 };
 
 type UserProps = {
-  country?: string;
-  email?: string;
-  id?: string;
-  ip_address?: string;
-  phone?: string;
-  province?: string;
+  readonly country?: string;
+  readonly email?: string;
+  readonly id?: string;
+  readonly ip_address?: string;
+  readonly phone?: string;
+  readonly province?: string;
 };
 
 // type CommonExceptionProps = ExceptionObject;
@@ -30,23 +30,24 @@ type CommonExceptionProps = {};
 export type CriticalEventProps = CommonExceptionProps;
 
 export type DataPointEventProps = CommonEventProps & {
-  model: {
-    name: Model['name'];
-    field: ModelField['name'];
+  readonly model: {
+    readonly name: Model['name'];
+    readonly field: ModelField['name'];
   };
-  value: number;
+  readonly value: number;
 };
 
-export type DebugEventProps =
-  | {
-      message: string;
-      data?: unknown;
-    }
-  | string;
+export type DebugEventProps = {
+  readonly message: string;
+  readonly data?: unknown;
+};
 
 export type ExceptionEventProps = CommonExceptionProps;
 
-export type HttpEventProps = HttpRequest | HttpResponse;
+export type HttpEventProps = {
+  readonly request?: HttpRequest;
+  readonly response?: HttpResponse;
+};
 
 export type InfoEventProps = string;
 
@@ -67,24 +68,24 @@ export enum DeviceType {
 }
 
 export type AnalyticsEventProps = {
-  action?: {
-    name: string;
+  readonly action?: {
+    readonly name: string;
   };
-  browser?: {
-    name?: string;
-    version?: string;
+  readonly browser?: {
+    readonly name?: string;
+    readonly version?: string;
   };
-  device?: {
-    type: DeviceType;
-    resolution?: {
-      height: number;
-      width: number;
+  readonly device?: {
+    readonly type: DeviceType;
+    readonly resolution?: {
+      readonly height: number;
+      readonly width: number;
     };
   };
-  type: AnalyticsEvent;
-  referrer?: string;
-  request: HttpRequest;
-  user?: UserProps;
+  readonly type: AnalyticsEvent;
+  readonly referrer?: string;
+  readonly request: HttpRequest;
+  readonly user?: UserProps;
 };
 
 export enum SocialMediaPlatform {
@@ -101,12 +102,12 @@ export enum SocialMediaInteraction {
 }
 
 export type SocialMediaAnalyticsEventProps = CommonEventProps & {
-  interaction: SocialMediaInteraction;
-  platform: SocialMediaPlatform;
+  readonly interaction: SocialMediaInteraction;
+  readonly platform: SocialMediaPlatform;
 };
 
 export type SEOEventProps = CommonEventProps & {
-  ranking?: {
-    position?: number;
+  readonly ranking?: {
+    readonly position?: number;
   };
 };

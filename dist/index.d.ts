@@ -1,7 +1,4 @@
-import Logger from './lib/logger.js';
-import { CloudWatchConfig } from './types/cloudwatch';
-import { LoggerConfig } from './types/index';
-export default Logger;
-export { Logger };
-export type { CloudWatchConfig, LoggerConfig };
+export { Logger } from './lib/logger.js';
+export { type CloudWatchConfig } from './types/cloudwatch';
+export { type LoggerConfig } from './types/index';
 //# sourceMappingURL=index.d.ts.map
