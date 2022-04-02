@@ -6,8 +6,10 @@
       "buildTypes": true,
       "bundle": true,
       "codeSplitting": true,
-      "define": {},
-      "excludeLibs": ["chalk"],
+      "define": {
+        "navigator": {}
+      },
+      "excludeLibs": [],
       "format": "esm",
       "inputScripts": ["./src/index.ts"],
       "minify": true,
@@ -22,8 +24,10 @@
       "buildFile": "index.cjs.js",
       "buildTypes": true,
       "bundle": true,
-      "define": {},
-      "excludeLibs": ["chalk"],
+      "define": {
+        "navigator": {}
+      },
+      "excludeLibs": [],
       "format": "cjs",
       "inputScripts": ["./src/index.ts"],
       "minify": true,
