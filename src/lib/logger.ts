@@ -34,24 +34,7 @@ export class Logger {
   public async exception(props: ExceptionEventProps): Promise<void> {
     console.error({ ...props, ...this.getCommonProps() });
   }
-  //   export declare type HttpRequest = {
-  //     body?: HttpRequestBody;
-  //     headers?: HttpRequestHeaders;
-  //     host?: HttpRequestHost;
-  //     id: string;
-  //     method: HttpRequestMethod;
-  //     resource: HttpRequestResource;
-  // };
-  // export declare type HttpResponse<T = {}> = {
-  //     body: HttpResponseBody<T>;
-  //     headers: HttpResponseHeaders;
-  //     request?: {
-  //         id: string;
-  //     };
-  //     status: {
-  //         code: HttpResponseCode;
-  //     };
-  // };
+
   public http(props: HttpEventProps): void {
     const { details, method, resource } = props.request ?? {};
     const { status } = props.response ?? {};
