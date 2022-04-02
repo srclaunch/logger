@@ -1,5 +1,5 @@
 import { Environment, LogLevel } from '@srclaunch/types';
-import chalk from 'chalk';
+import { Chalk } from 'chalk';
 // import { getBrowserEnvironment, getNodeEnvironment } from '@srclaunch/environment';
 import { nanoid } from 'nanoid';
 
@@ -55,6 +55,7 @@ export class Logger {
   public http(props: HttpEventProps): void {
     const { details, method, resource } = props.request ?? {};
     const { status } = props.response ?? {};
+    const chalk = new Chalk();
 
     const message = `[${chalk.blue(details?.date)}]
       ${method}:${resource} 
