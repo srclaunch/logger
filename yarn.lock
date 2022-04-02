@@ -1944,15 +1944,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@srclaunch/exceptions@npm:^0.1.32":
-  version: 0.1.32
-  resolution: "@srclaunch/exceptions@npm:0.1.32"
+"@srclaunch/exceptions@npm:^0.1.36":
+  version: 0.1.36
+  resolution: "@srclaunch/exceptions@npm:0.1.36"
   dependencies:
     "@srclaunch/logger": ^0.1.32
     luxon: ^2.3.1
     nanoid: ^3.3.2
     serialize-error: ^9.1.1
-  checksum: 4e6502051cd21a350e4b71c97bbd476642fabb75cc294cde74a8bfbfc74395a381dd1196834f352ac8040a4658ef765376f71cb5ed9b6454f8ea41fb865fe7c2
+  checksum: 607ad53361c8c814f2c13c44b4b9345cf7c535164be1c88def8ee6c01c4ae76345cb2050e06fd43b47475f9ff907f9c64aecf01fc22c6038e636da858e0aeac9
   languageName: node
   linkType: hard
 
@@ -1962,8 +1962,10 @@ __metadata:
   dependencies:
     "@srclaunch/cli": ^0.1.92
     "@srclaunch/dx": ^0.1.18
-    "@srclaunch/exceptions": ^0.1.32
+    "@srclaunch/exceptions": ^0.1.36
+    "@srclaunch/node-environment": ^0.1.8
     "@srclaunch/types": ^0.1.28
+    "@srclaunch/web-environment": ^0.1.9
     "@types/express": ^4.17.13
     "@types/jest": ^27.4.1
     "@types/luxon": ^2.3.1
@@ -2012,10 +2014,24 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@srclaunch/node-environment@npm:^0.1.8":
+  version: 0.1.8
+  resolution: "@srclaunch/node-environment@npm:0.1.8"
+  checksum: ad295dc26aa7b5167d47801bab098bbcec41a604ab89f09840ab66617337a3ba1e9e3d0d1af483a4d1857b3aa5805a236e4ea5b342e39fa3728f066a820fac56
+  languageName: node
+  linkType: hard
+
 "@srclaunch/types@npm:^0.1.28":
   version: 0.1.28
   resolution: "@srclaunch/types@npm:0.1.28"
   checksum: de0cf5cf44c7252cc13a08d00e3ebc7a806d7a1e57cb87f8953a099fa8e4b35fdc24f8b266a95c9f723e68036667f8e87f1a59da21abedad2278a3ad57011cde
+  languageName: node
+  linkType: hard
+
+"@srclaunch/web-environment@npm:^0.1.9":
+  version: 0.1.9
+  resolution: "@srclaunch/web-environment@npm:0.1.9"
+  checksum: d7350400244a64dcc8a3edabcdf2a82a9db2d49f7204aea0ee582e78fd81af976a8bd77aa384642d2d2536257aff80c7a2d74506636b37913669356593551e30
   languageName: node
   linkType: hard
 

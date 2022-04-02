@@ -28,17 +28,33 @@ export class Logger {
     this.level = config?.level ?? LogLevel.Info;
   }
 
-  public analytics(props: AnalyticsEventProps): void {
-    console.info({ ...this.getCommonProps(), ...props });
+  public analytics(props: AnalyticsEventProps): Record<string, unknown> {
+    const data = { ...props, ...this.getCommonProps() };
+
+    console.info(data);
+
+    return data;
   }
-  public critical(props: CriticalEventProps): void {
-    console.error({ ...props, ...this.getCommonProps() });
+  public critical(props: CriticalEventProps): Record<string, unknown> {
+    const data = { ...props, ...this.getCommonProps() };
+
+    console.error(data);
+
+    return data;
   }
-  public debug(props: DebugEventProps): void {
-    console.debug({ ...props, ...this.getCommonProps() });
+  public debug(props: DebugEventProps): Record<string, unknown> {
+    const data = { ...props, ...this.getCommonProps() };
+
+    console.debug(data);
+
+    return data;
   }
-  public exception(props: ExceptionEventProps): void {
-    const message = `[${chalk.blue(props?.created)}]
+  public exception(props: ExceptionEventProps): string {
+    const dt = DateTime.fromISO(
+      props?.created ?? new Date().toISOString(),
+    ).toFormat('yyyy-MM-dd HH:mm:ss');
+
+    const message = `[${chalk.blue(dt)}]
     ${props.id}:${props.message} 
     ${chalk.red(props.cause)}`;
 
@@ -49,12 +65,16 @@ export class Logger {
     //     ...props,
     //   };
     console.error(message);
+
+    return message;
   }
 
-  public http(props: HttpEventProps): void {
+  public http(props: HttpEventProps): string {
     const { details, method, resource } = props.request ?? {};
     const { details: responseDetails, status } = props.response ?? {};
-    const dt = DateTime.fromISO(details?.date ?? new Date().toISOString());
+    const dt = DateTime.fromISO(
+      details?.date ?? new Date().toISOString(),
+    ).toFormat('yyyy-MM-dd HH:mm:ss');
 
     const message = `[${chalk.blue(dt)}] HTTP ${chalk.red(
       status?.code,
@@ -73,22 +93,32 @@ export class Logger {
     // };
 
     console.info(message);
+
+    return message;
   }
 
-  public info(props: InfoEventProps): void {
-    const dt = DateTime.fromISO(new Date().toISOString());
+  public info(props: InfoEventProps): string {
+    const dt = DateTime.fromISO(new Date().toISOString()).toFormat(
+      'yyyy-MM-dd HH:mm:ss',
+    );
 
     const message = `[${chalk.blue(dt)}] ${props}`;
 
     console.info(message);
+
+    return message;
   }
 
-  public warning(props: WarningEventProps): void {
-    console.warn({ ...this.getCommonProps(), ...props });
+  public warning(props: WarningEventProps): Record<string, unknown> {
+    const data = { ...this.getCommonProps(), ...props };
+    console.warn(data);
+    return data;
   }
 
   private getCommonProps() {
-    const dt = DateTime.fromISO(new Date().toISOString());
+    const dt = DateTime.fromISO(new Date().toISOString()).toFormat(
+      'yyyy-MM-dd HH:mm:ss',
+    );
 
     return {
       created: dt,

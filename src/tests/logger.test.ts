@@ -1,10 +1,26 @@
 import test from 'ava';
-// import { Logger } from '../index';
+import { Logger } from '../lib/logger.js';
+import { getEnvironment } from '@srclaunch/node-environment';
 
-test('Truthy', t => {
-  t.pass();
+test('create new Logger instance', t => {
+  const logger = new Logger();
+  t.truthy(logger);
 });
-// test('Can create new Logger instance', t => {
-//   const logger = new Logger();
-//   t.truthy(logger);
-// });
+
+test('setting Logger environment', t => {
+  const logger = new Logger({
+    environment: getEnvironment(),
+  });
+
+  t.assert(logger.environment?.id === 'test');
+});
+
+test('logging to console', t => {
+  const logger = new Logger({
+    environment: getEnvironment(),
+  });
+
+  const result = logger.info('Test Info Log');
+
+  t.truthy(result.includes('Test Info Log'));
+});
