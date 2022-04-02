@@ -31,7 +31,7 @@ export class Logger {
   public debug(props: DebugEventProps): void {
     console.debug({ ...props, ...this.getCommonProps() });
   }
-  public async exception(props: ExceptionEventProps): Promise<void> {
+  public exception(props: ExceptionEventProps): void {
     console.error({ ...props, ...this.getCommonProps() });
   }
 
@@ -53,7 +53,7 @@ export class Logger {
     console.info(message);
   }
 
-  public async info(props: InfoEventProps): Promise<void> {
+  public info(props: InfoEventProps): void {
     console.info({ ...this.getCommonProps(), message: props });
   }
   public warning(props: WarningEventProps): void {
