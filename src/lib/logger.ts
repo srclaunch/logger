@@ -54,9 +54,9 @@ export class Logger {
     const { details, method, resource } = props.request ?? {};
     const { status } = props.response ?? {};
 
-    const message = `[${chalk.blue(details?.date)}]
-      ${method}:${resource} 
-      ${chalk.red(status?.code)}`;
+    const message = `[${chalk.blue(
+      details?.date,
+    )}] ${method}:${resource} ${chalk.red(status?.code)}`.trim();
 
     // TODO: Send this to logging server
     // const data = {
