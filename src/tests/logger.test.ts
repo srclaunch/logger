@@ -22,5 +22,5 @@ test('logging to console', t => {
 
   const result = logger.info('Test Info Log');
 
-  t.truthy(result.includes('Test Info Log'));
+  t.truthy(result.message?.includes('Test Info Log'));
 });

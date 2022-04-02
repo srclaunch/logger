@@ -5,7 +5,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       ${i} 
       ${P.white(n)}`,...this.getCommonProps()};return console.debug(u.message),u}exception({message:n,cause:i,id:e}){let u=this.getCommonProps(),s={...u,message:`[${P.blue(u.created)}]
       ${e}:${n} 
-      ${P.red(i)}`};return console.error(s.message),s}http({request:n,response:i}){let{details:e,method:u,resource:s}=n??{},{details:t,status:r}=i??{},o=this.getCommonProps(),l={...o,message:`[${P.blue(o.created)}] HTTP ${P.red(r?.code)} -> ${P.red(u)}:${s} (id: ${t?.id??""} - ${t?.duration}ms - ${t?.size}kb)`.replace(/\n\s+/g,"")};return console.info(l.message),l}info({message:n}){let i=this.getCommonProps(),e={...i,message:`[${P.blue(i.created)}] ${n}`};return console.info(e.message),e}warning({cause:n,id:i,message:e}){let u=this.getCommonProps(),s={...u,message:`[${P.blue(u.created)}]
+      ${P.red(i)}`};return console.error(s.message),s}http({request:n,response:i}){let{details:e,method:u,resource:s}=n??{},{details:t,status:r}=i??{},o=this.getCommonProps(),l={...o,message:`[${P.blue(o.created)}] HTTP ${P.red(r?.code)} -> ${P.red(u)}:${s} (id: ${t?.id??""} - ${t?.duration}ms - ${t?.size}kb)`.replace(/\n\s+/g,"")};return console.info(l.message),l}info(n){let i=this.getCommonProps(),e={...i,message:`[${P.blue(i.created)}] ${n}`};return console.info(e.message),e}warning({cause:n,id:i,message:e}){let u=this.getCommonProps(),s={...u,message:`[${P.blue(u.created)}]
       ${i}:${e} 
       ${P.yellow(n)}`};return console.warn(s),s}getCommonProps(){return{created:xi.DateTime.now().toFormat("yyyy-MM-dd HH:mm:ss"),environment:this.environment?.id,id:Tr()}}};export{Ki as Logger,os as expressLoggerMiddleware};
 //# sourceMappingURL=index.js.map

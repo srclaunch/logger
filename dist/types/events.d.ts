@@ -5,6 +5,7 @@ export declare type LogEvent = {
     readonly created: ISO8601String;
     readonly environment?: string;
     readonly id: string;
+    readonly message?: string;
     readonly pii?: boolean;
     readonly source?: string;
 };
@@ -26,9 +27,7 @@ export declare type HttpEventProps = CommonEventProps & {
     readonly request?: HttpRequest;
     readonly response?: HttpResponse;
 };
-export declare type InfoEventProps = CommonEventProps & {
-    message: string;
-};
+export declare type InfoEventProps = string;
 export declare type WarningEventProps = CommonEventProps & ExceptionObject;
 export declare enum AnalyticsEvent {
     Action = "action",

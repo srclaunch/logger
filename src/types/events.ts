@@ -12,6 +12,7 @@ export type LogEvent = {
   readonly created: ISO8601String;
   readonly environment?: string;
   readonly id: string;
+  readonly message?: string;
   readonly pii?: boolean;
   readonly source?: string;
 };
@@ -39,9 +40,7 @@ export type HttpEventProps = CommonEventProps & {
   readonly response?: HttpResponse;
 };
 
-export type InfoEventProps = CommonEventProps & {
-  message: string;
-};
+export type InfoEventProps = string;
 
 export type WarningEventProps = CommonEventProps & ExceptionObject;
 

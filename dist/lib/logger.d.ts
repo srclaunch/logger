@@ -10,7 +10,7 @@ export declare class Logger {
     debug({ data, message }: DebugEventProps): LogEvent;
     exception({ message, cause, id }: ExceptionEventProps): LogEvent;
     http({ request, response }: HttpEventProps): LogEvent;
-    info({ message }: InfoEventProps): LogEvent;
+    info(message: InfoEventProps): LogEvent;
     warning({ cause, id, message }: WarningEventProps): LogEvent;
     private getCommonProps;
 }

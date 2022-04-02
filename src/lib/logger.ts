@@ -105,7 +105,7 @@ export class Logger {
     return event;
   }
 
-  public info({ message }: InfoEventProps): LogEvent {
+  public info(message: InfoEventProps): LogEvent {
     const props = this.getCommonProps();
 
     const event = {
