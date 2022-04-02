@@ -1,17 +1,10 @@
 import test from 'ava';
+// import { Logger } from '../index';
 
-function sum(a: number, b: number) {
-  return a + b;
-}
-test('foo is being tested', t => {
+test('Truthy', t => {
   t.pass();
 });
-test('bar is being tested', async t => {
-  const bar = Promise.resolve('bar');
-  t.is(await bar, 'bar');
-});
-test('sum of 2 numbers', t => {
-  t.plan(2);
-  t.pass('this assertion passed');
-  t.is(sum(1, 2), 3);
-});
+// test('Can create new Logger instance', t => {
+//   const logger = new Logger();
+//   t.truthy(logger);
+// });
