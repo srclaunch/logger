@@ -90,14 +90,11 @@ export class Logger {
 
     const event = {
       ...props,
-      message: `[${chalk.blue(props.created)}] HTTP ${chalk.red(
-        status?.code,
-      )} -> ${chalk.red(method)}:${resource} (id: ${
+      message: `[${chalk.blue(props.created)}]  ${chalk.yellowBright(
+        `HTTP ${status?.code}`,
+      )} ${chalk.yellow(`${method} ${resource}`)}: (id: ${
         responseDetails?.id ?? ''
-      } - ${responseDetails?.duration}ms - ${responseDetails?.size}kb)`.replace(
-        /\n\s+/g,
-        '',
-      ),
+      } - ${responseDetails?.duration}ms)`.replace(/\n\s+/g, ''),
     };
 
     console.info(event.message);
