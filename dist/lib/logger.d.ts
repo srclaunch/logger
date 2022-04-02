@@ -1,17 +1,17 @@
 import { Environment } from '@srclaunch/types';
-import { AnalyticsEventProps, CriticalEventProps, DebugEventProps, ExceptionEventProps, HttpEventProps, InfoEventProps, WarningEventProps } from '../types/events';
+import { AnalyticsEventProps, CriticalEventProps, DebugEventProps, LogEvent, ExceptionEventProps, HttpEventProps, InfoEventProps, WarningEventProps } from '../types/events';
 import { LoggerConfig } from '../types/index';
 export declare class Logger {
     private readonly level;
     readonly environment?: Environment;
     constructor(config?: LoggerConfig);
-    analytics(props: AnalyticsEventProps): Record<string, unknown>;
-    critical(props: CriticalEventProps): Record<string, unknown>;
-    debug(props: DebugEventProps): Record<string, unknown>;
-    exception(props: ExceptionEventProps): string;
-    http(props: HttpEventProps): string;
-    info(props: InfoEventProps): string;
-    warning(props: WarningEventProps): Record<string, unknown>;
+    analytics(props: AnalyticsEventProps): LogEvent;
+    critical({ cause, id, message }: CriticalEventProps): LogEvent;
+    debug({ data, message }: DebugEventProps): LogEvent;
+    exception({ message, cause, id }: ExceptionEventProps): LogEvent;
+    http({ request, response }: HttpEventProps): LogEvent;
+    info({ message }: InfoEventProps): LogEvent;
+    warning({ cause, id, message }: WarningEventProps): LogEvent;
     private getCommonProps;
 }
 //# sourceMappingURL=logger.d.ts.map

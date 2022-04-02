@@ -7,25 +7,17 @@ import {
 } from '@srclaunch/types';
 import { ExceptionObject } from '@srclaunch/exceptions';
 
-type CommonEventProps = {
+export type LogEvent = {
+  readonly context?: Record<string, unknown>;
   readonly created: ISO8601String;
-  readonly environment: string;
+  readonly environment?: string;
   readonly id: string;
   readonly pii?: boolean;
+  readonly source?: string;
 };
 
-type UserProps = {
-  readonly country?: string;
-  readonly email?: string;
-  readonly id?: string;
-  readonly ip_address?: string;
-  readonly phone?: string;
-  readonly province?: string;
-};
-
-export type CommonExceptionProps = ExceptionObject;
-
-export type CriticalEventProps = CommonExceptionProps;
+export type CommonEventProps = Omit<LogEvent, 'id' | 'created'>;
+export type CriticalEventProps = CommonEventProps & ExceptionObject;
 
 export type DataPointEventProps = CommonEventProps & {
   readonly model: {
@@ -35,21 +27,23 @@ export type DataPointEventProps = CommonEventProps & {
   readonly value: number;
 };
 
-export type DebugEventProps = {
+export type ExceptionEventProps = CommonEventProps & ExceptionObject;
+
+export type DebugEventProps = CommonEventProps & {
   readonly message: string;
   readonly data?: unknown;
 };
 
-export type ExceptionEventProps = CommonExceptionProps;
-
-export type HttpEventProps = {
+export type HttpEventProps = CommonEventProps & {
   readonly request?: HttpRequest;
   readonly response?: HttpResponse;
 };
 
-export type InfoEventProps = string;
+export type InfoEventProps = CommonEventProps & {
+  message: string;
+};
 
-export type WarningEventProps = CommonExceptionProps;
+export type WarningEventProps = CommonEventProps & ExceptionObject;
 
 export enum AnalyticsEvent {
   Action = 'action',
@@ -83,7 +77,7 @@ export type AnalyticsEventProps = {
   readonly type: AnalyticsEvent;
   readonly referrer?: string;
   readonly request: HttpRequest;
-  readonly user?: UserProps;
+  // readonly user?: UserProps;
 };
 
 export enum SocialMediaPlatform {

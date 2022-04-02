@@ -10,6 +10,7 @@ import {
   AnalyticsEventProps,
   CriticalEventProps,
   DebugEventProps,
+  LogEvent,
   ExceptionEventProps,
   HttpEventProps,
   InfoEventProps,
@@ -28,100 +29,113 @@ export class Logger {
     this.level = config?.level ?? LogLevel.Info;
   }
 
-  public analytics(props: AnalyticsEventProps): Record<string, unknown> {
-    const data = { ...props, ...this.getCommonProps() };
+  public analytics(props: AnalyticsEventProps): LogEvent {
+    const event = { ...props, ...this.getCommonProps() };
 
-    console.info(data);
+    console.info(event);
 
-    return data;
-  }
-  public critical(props: CriticalEventProps): Record<string, unknown> {
-    const data = { ...props, ...this.getCommonProps() };
-
-    console.error(data);
-
-    return data;
-  }
-  public debug(props: DebugEventProps): Record<string, unknown> {
-    const data = { ...props, ...this.getCommonProps() };
-
-    console.debug(data);
-
-    return data;
-  }
-  public exception(props: ExceptionEventProps): string {
-    const dt = DateTime.fromISO(
-      props?.created ?? new Date().toISOString(),
-    ).toFormat('yyyy-MM-dd HH:mm:ss');
-
-    const message = `[${chalk.blue(dt)}]
-    ${props.id}:${props.message} 
-    ${chalk.red(props.cause)}`;
-
-    // TODO: Send this to logging server
-    // const data = {
-    //     message: message,
-    //     ...this.getCommonProps(),
-    //     ...props,
-    //   };
-    console.error(message);
-
-    return message;
+    return event;
   }
 
-  public http(props: HttpEventProps): string {
-    const { details, method, resource } = props.request ?? {};
-    const { details: responseDetails, status } = props.response ?? {};
-    const dt = DateTime.fromISO(
-      details?.date ?? new Date().toISOString(),
-    ).toFormat('yyyy-MM-dd HH:mm:ss');
+  public critical({ cause, id, message }: CriticalEventProps): LogEvent {
+    const props = this.getCommonProps();
 
-    const message = `[${chalk.blue(dt)}] HTTP ${chalk.red(
-      status?.code,
-    )} -> ${chalk.red(method)}:${resource} (id: ${
-      responseDetails?.id ?? ''
-    } - ${responseDetails?.duration}ms - ${responseDetails?.size}kb)`.replace(
-      /\n\s+/g,
-      '',
-    );
+    const event = {
+      ...props,
+      message: `[${chalk.blue(props.created)}]
+      ${id}:${message} 
+      ${chalk.bgRed.white(cause)}`,
+    };
 
-    // TODO: Send this to logging server
-    // const data = {
-    //   message: message,
-    //   ...this.getCommonProps(),
-    //   ...props,
-    // };
+    console.error(event.message);
 
-    console.info(message);
-
-    return message;
+    return event;
   }
 
-  public info(props: InfoEventProps): string {
-    const dt = DateTime.fromISO(new Date().toISOString()).toFormat(
-      'yyyy-MM-dd HH:mm:ss',
-    );
+  public debug({ data, message }: DebugEventProps): LogEvent {
+    const props = this.getCommonProps();
 
-    const message = `[${chalk.blue(dt)}] ${props}`;
+    const event = {
+      ...props,
+      message: `[${chalk.blue(props.created)}]
+      ${message} 
+      ${chalk.white(data)}`,
+      ...this.getCommonProps(),
+    };
 
-    console.info(message);
+    console.debug(event.message);
 
-    return message;
+    return event;
+  }
+  public exception({ message, cause, id }: ExceptionEventProps): LogEvent {
+    const props = this.getCommonProps();
+
+    const event = {
+      ...props,
+      message: `[${chalk.blue(props.created)}]
+      ${id}:${message} 
+      ${chalk.red(cause)}`,
+    };
+
+    console.error(event.message);
+
+    return event;
   }
 
-  public warning(props: WarningEventProps): Record<string, unknown> {
-    const data = { ...this.getCommonProps(), ...props };
-    console.warn(data);
-    return data;
+  public http({ request, response }: HttpEventProps): LogEvent {
+    const { details, method, resource } = request ?? {};
+    const { details: responseDetails, status } = response ?? {};
+
+    const props = this.getCommonProps();
+
+    const event = {
+      ...props,
+      message: `[${chalk.blue(props.created)}] HTTP ${chalk.red(
+        status?.code,
+      )} -> ${chalk.red(method)}:${resource} (id: ${
+        responseDetails?.id ?? ''
+      } - ${responseDetails?.duration}ms - ${responseDetails?.size}kb)`.replace(
+        /\n\s+/g,
+        '',
+      ),
+    };
+
+    console.info(event.message);
+
+    return event;
+  }
+
+  public info({ message }: InfoEventProps): LogEvent {
+    const props = this.getCommonProps();
+
+    const event = {
+      ...props,
+      message: `[${chalk.blue(props.created)}] ${message}`,
+    };
+
+    console.info(event.message);
+
+    return event;
+  }
+
+  public warning({ cause, id, message }: WarningEventProps): LogEvent {
+    const props = this.getCommonProps();
+
+    const event = {
+      ...props,
+      message: `[${chalk.blue(props.created)}]
+      ${id}:${message} 
+      ${chalk.yellow(cause)}`,
+    };
+
+    console.warn(event);
+
+    return event;
   }
 
   private getCommonProps() {
-    const dt = DateTime.fromISO(new Date().toISOString()).toFormat(
-      'yyyy-MM-dd HH:mm:ss',
-    );
-
     return {
-      created: dt,
+      created: DateTime.now().toFormat('yyyy-MM-dd HH:mm:ss'),
       environment: this.environment?.id,
       id: nanoid(),
     };
