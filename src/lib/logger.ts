@@ -21,7 +21,7 @@ import { LoggerConfig } from '../types/index';
 // import { getCloudwatchTransport } from './cloudwatch.js';
 
 export class Logger {
-  private readonly level: LogLevel;
+  private level: LogLevel;
   public readonly environment?: Environment;
 
   public constructor(config?: LoggerConfig) {
@@ -37,11 +37,17 @@ export class Logger {
     return event;
   }
 
-  public critical({ cause, id, message }: CriticalEventProps): LogEvent {
+  public critical({
+    cause,
+    id,
+    message,
+    ...eventArgs
+  }: CriticalEventProps): LogEvent {
     const props = this.getCommonProps();
 
     const event = {
       ...props,
+      ...eventArgs,
       message: `[${chalk.blue(props.created)}]
       ${id}:${message} 
       ${chalk.bgRed.white(cause)}`,
@@ -52,11 +58,12 @@ export class Logger {
     return event;
   }
 
-  public debug({ data, message }: DebugEventProps): LogEvent {
+  public debug({ data, message, ...eventArgs }: DebugEventProps): LogEvent {
     const props = this.getCommonProps();
 
     const event = {
       ...props,
+      ...eventArgs,
       message: `[${chalk.blue(props.created)}]
       ${message} 
       ${chalk.white(data)}`,
@@ -67,11 +74,17 @@ export class Logger {
 
     return event;
   }
-  public exception({ message, cause, id }: ExceptionEventProps): LogEvent {
+  public exception({
+    message,
+    cause,
+    id,
+    ...eventArgs
+  }: ExceptionEventProps): LogEvent {
     const props = this.getCommonProps();
 
     const event = {
       ...props,
+      ...eventArgs,
       message: `[${chalk.blue(props.created)}]
       ${id}:${message} 
       ${chalk.red(cause)}`,
@@ -82,7 +95,7 @@ export class Logger {
     return event;
   }
 
-  public http({ request, response }: HttpEventProps): LogEvent {
+  public http({ request, response, ...eventArgs }: HttpEventProps): LogEvent {
     const { method, resource, details: requestDetails } = request ?? {};
     const { status, details: responseDetails } = response ?? {};
 
@@ -90,6 +103,7 @@ export class Logger {
 
     const event = {
       ...props,
+      ...eventArgs,
       message: `[${chalk.blue(props.created)}] ${chalk.bold.hex('#ffcc00')(
         `<${requestDetails?.id ?? '?'}> `,
       )}${chalk.yellowBright(`HTTP ${status?.code}`)} ${chalk.yellow(
@@ -117,11 +131,17 @@ export class Logger {
     return event;
   }
 
-  public warning({ cause, id, message }: WarningEventProps): LogEvent {
+  public warning({
+    cause,
+    id,
+    message,
+    ...eventArgs
+  }: WarningEventProps): LogEvent {
     const props = this.getCommonProps();
 
     const event = {
       ...props,
+      ...eventArgs,
       message: `[${chalk.blue(props.created)}]
       ${id}:${message} 
       ${chalk.yellow(cause)}`,
@@ -137,6 +157,7 @@ export class Logger {
       created: DateTime.now().toFormat('yyyy-MM-dd HH:mm:ss'),
       environment: this.environment?.id,
       id: nanoid(),
+      level: this.level,
     };
   }
 
