@@ -1,4 +1,5 @@
 import { Environment, LogLevel } from '@srclaunch/types';
+import chalk from 'chalk';
 // import { getBrowserEnvironment, getNodeEnvironment } from '@srclaunch/environment';
 import { nanoid } from 'nanoid';
 
@@ -33,9 +34,42 @@ export class Logger {
   public async exception(props: ExceptionEventProps): Promise<void> {
     console.error({ ...props, ...this.getCommonProps() });
   }
+  //   export declare type HttpRequest = {
+  //     body?: HttpRequestBody;
+  //     headers?: HttpRequestHeaders;
+  //     host?: HttpRequestHost;
+  //     id: string;
+  //     method: HttpRequestMethod;
+  //     resource: HttpRequestResource;
+  // };
+  // export declare type HttpResponse<T = {}> = {
+  //     body: HttpResponseBody<T>;
+  //     headers: HttpResponseHeaders;
+  //     request?: {
+  //         id: string;
+  //     };
+  //     status: {
+  //         code: HttpResponseCode;
+  //     };
+  // };
   public http(props: HttpEventProps): void {
-    console.info({ ...this.getCommonProps(), ...props });
+    const { details, method, resource } = props.request ?? {};
+    const { status } = props.response ?? {};
+
+    const message = `[${chalk.blue(details?.date)}]
+      ${method}:${resource} 
+      ${chalk.red(status?.code)}`;
+
+    // TODO: Send this to logging server
+    // const data = {
+    //   message: message,
+    //   ...this.getCommonProps(),
+    //   ...props,
+    // };
+
+    console.info(message);
   }
+
   public async info(props: InfoEventProps): Promise<void> {
     console.info({ ...this.getCommonProps(), message: props });
   }
@@ -52,7 +86,7 @@ export class Logger {
 
   public constructor(config?: LoggerConfig) {
     this.environment = config?.environment;
-    this.level = config?.level ?? 'info';
+    this.level = config?.level ?? LogLevel.Info;
   }
 
   // private getLogLevel(): string {

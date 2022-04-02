@@ -1,10 +1,9 @@
-import { Environment } from '@srclaunch/types';
-
+import { Environment, LogLevel } from '@srclaunch/types';
 
 import { CloudWatchConfig } from './cloudwatch';
 
 export type LoggerConfig = {
-  cloudwatchConfig?: CloudWatchConfig;
-  environment?: Environment;
-  level?: string;
+  readonly cloudwatchConfig?: CloudWatchConfig;
+  readonly environment?: Environment;
+  readonly level?: LogLevel;
 };
