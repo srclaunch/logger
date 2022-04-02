@@ -12,7 +12,7 @@ const getActualRequestDurationInMilliseconds = (start: [number, number]) => {
   return (diff[0] * NS_PER_SEC + diff[1]) / NS_TO_MS;
 };
 
-export function loggerExpressMiddleware(
+export function expressLoggerMiddleware(
   logger: Logger,
   req: Request,
   res: Response,
