@@ -52,11 +52,16 @@ export class Logger {
 
   public http(props: HttpEventProps): void {
     const { details, method, resource } = props.request ?? {};
-    const { status } = props.response ?? {};
+    const { details: responseDetails, status } = props.response ?? {};
 
-    const message = `[${chalk.blue(
-      details?.date,
-    )}] ${method}:${resource} ${chalk.red(status?.code)}`.replace(/\n\s+/g, '');
+    const message = `[${chalk.blue(details?.date)}] HTTP ${chalk.red(
+      status?.code,
+    )} -> ${chalk.red(method)}:${resource} (id: ${
+      responseDetails?.id ?? ''
+    } - ${responseDetails?.duration}ms - ${responseDetails?.size}kb)`.replace(
+      /\n\s+/g,
+      '',
+    );
 
     // TODO: Send this to logging server
     // const data = {
