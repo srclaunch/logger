@@ -2,7 +2,7 @@
 import { HttpRequestMethod } from '@srclaunch/types';
 import { NextFunction, Request, Response } from 'express';
 import { DateTime } from 'luxon';
-import { Logger } from './logger';
+import { Logger } from '../logger';
 
 const getActualRequestDurationInMilliseconds = (start: [number, number]) => {
   const NS_PER_SEC = 1e9; //  convert to nanoseconds
@@ -12,7 +12,7 @@ const getActualRequestDurationInMilliseconds = (start: [number, number]) => {
   return (diff[0] * NS_PER_SEC + diff[1]) / NS_TO_MS;
 };
 
-export function loggerExpressMiddlware(
+export function loggerExpressMiddleware(
   logger: Logger,
   req: Request,
   res: Response,
