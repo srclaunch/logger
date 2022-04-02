@@ -7,7 +7,7 @@
       "bundle": true,
       "codeSplitting": true,
       "define": {
-        "navigator": {}
+        "navigator": "{}"
       },
       "excludeLibs": [],
       "format": "esm",
@@ -25,7 +25,7 @@
       "buildTypes": true,
       "bundle": true,
       "define": {
-        "navigator": {}
+        "navigator": "{}"
       },
       "excludeLibs": [],
       "format": "cjs",
