@@ -1,5 +1,6 @@
 import { Environment, LogLevel } from '@srclaunch/types';
 import chalk from 'chalk';
+import { DateTime } from 'luxon';
 // import { getBrowserEnvironment, getNodeEnvironment } from '@srclaunch/environment';
 import { nanoid } from 'nanoid';
 
@@ -53,8 +54,9 @@ export class Logger {
   public http(props: HttpEventProps): void {
     const { details, method, resource } = props.request ?? {};
     const { details: responseDetails, status } = props.response ?? {};
+    const dt = DateTime.fromISO(details?.date ?? new Date().toISOString());
 
-    const message = `[${chalk.blue(details?.date)}] HTTP ${chalk.red(
+    const message = `[${chalk.blue(dt)}] HTTP ${chalk.red(
       status?.code,
     )} -> ${chalk.red(method)}:${resource} (id: ${
       responseDetails?.id ?? ''
@@ -74,7 +76,9 @@ export class Logger {
   }
 
   public info(props: InfoEventProps): void {
-    const message = `[${chalk.blue(new Date().toISOString())}] ${props}`;
+    const dt = DateTime.fromISO(new Date().toISOString());
+
+    const message = `[${chalk.blue(dt)}] ${props}`;
 
     console.info(message);
   }
@@ -84,8 +88,10 @@ export class Logger {
   }
 
   private getCommonProps() {
+    const dt = DateTime.fromISO(new Date().toISOString());
+
     return {
-      created: new Date().toString(),
+      created: dt,
       environment: this.environment?.id,
       id: nanoid(),
     };

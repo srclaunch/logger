@@ -1,6 +1,7 @@
 // or you can use the require('chalk') syntax too
 import { HttpRequestMethod } from '@srclaunch/types';
 import { NextFunction, Request, Response } from 'express';
+import { DateTime } from 'luxon';
 import { Logger } from './logger';
 
 const getActualRequestDurationInMilliseconds = (start: [number, number]) => {
@@ -19,13 +20,13 @@ export function loggerExpressMiddlware(
 ) {
   if (logger) {
     const start = process.hrtime();
-    const now = new Date();
+    const now = DateTime.now();
     const requestId = req.headers['X-Request-Id']?.toString();
 
     logger.http({
       request: {
         details: {
-          date: now.toISOString(),
+          date: now.toISO(),
           id: requestId,
           size: Number.parseInt(
             req.headers['content-length']?.toString() ?? '0',
@@ -37,7 +38,7 @@ export function loggerExpressMiddlware(
       },
       response: {
         details: {
-          date: now.toISOString(),
+          date: now.toISO(),
           duration: getActualRequestDurationInMilliseconds(start),
           request: {
             id: requestId,
