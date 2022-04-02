@@ -51,5 +51,5 @@ export function loggerExpressMiddlware(
     });
   }
 
-  next();
+  return next();
 }
