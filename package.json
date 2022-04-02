@@ -31,7 +31,8 @@
     "clean": "rm -fr ./dist",
     "git:push": "git push --follow-tags origin main",
     "qr": "yarn build && git add . && git commit -m \"Quick release - patch\" && yarn release",
-    "release": "yarn version:patch && yarn git:push",
+    "release": "yarn build && yarn test && yarn version:patch && yarn git:push",
+    "test": "ava",
     "version:patch": "standard-version",
     "yui": "yarn upgrade-interactive"
   },
@@ -45,6 +46,7 @@
     "@types/morgan": "^1.9.3",
     "@typescript-eslint/eslint-plugin": "^5.17.0",
     "@typescript-eslint/parser": "^5.17.0",
+    "ava": "^4.1.0",
     "eslint": "^8.12.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-react-app": "^7.0.0",
