@@ -22,6 +22,11 @@ export class Logger {
   private readonly level: LogLevel;
   public readonly environment?: Environment;
 
+  public constructor(config?: LoggerConfig) {
+    this.environment = config?.environment;
+    this.level = config?.level ?? LogLevel.Info;
+  }
+
   public analytics(props: AnalyticsEventProps): void {
     console.info({ ...this.getCommonProps(), ...props });
   }
@@ -42,7 +47,7 @@ export class Logger {
     //     ...this.getCommonProps(),
     //     ...props,
     //   };
-    console.info(message);
+    console.error(message);
   }
 
   public http(props: HttpEventProps): void {
@@ -68,20 +73,17 @@ export class Logger {
 
     console.info(message);
   }
+
   public warning(props: WarningEventProps): void {
     console.warn({ ...this.getCommonProps(), ...props });
   }
+
   private getCommonProps() {
     return {
       created: new Date().toString(),
       environment: this.environment?.id,
       id: nanoid(),
     };
-  }
-
-  public constructor(config?: LoggerConfig) {
-    this.environment = config?.environment;
-    this.level = config?.level ?? LogLevel.Info;
   }
 
   // private getLogLevel(): string {

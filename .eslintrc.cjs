@@ -5,6 +5,7 @@ module.exports = {
   overrides: [
     {
       rules: {
+        'no-console': 'off',
         'functional/prefer-readonly-type': 'off',
       },
     },
