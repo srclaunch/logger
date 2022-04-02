@@ -83,18 +83,20 @@ export class Logger {
   }
 
   public http({ request, response }: HttpEventProps): LogEvent {
-    const { details, method, resource } = request ?? {};
-    const { details: responseDetails, status } = response ?? {};
+    const { method, resource, details: requestDetails } = request ?? {};
+    const { status, details: responseDetails } = response ?? {};
 
     const props = this.getCommonProps();
 
     const event = {
       ...props,
-      message: `[${chalk.blue(props.created)}]  ${chalk.yellowBright(
+      message: `[${chalk.blue(props.created)}] ${chalk.yellowBright(
         `HTTP ${status?.code}`,
-      )} ${chalk.yellow(`${method} ${resource}`)}: (id: ${
-        responseDetails?.id ?? ''
-      } - ${responseDetails?.duration}ms)`.replace(/\n\s+/g, ''),
+      )} ${chalk.yellow(
+        `${method} ${resource}: (id: ${requestDetails?.id ?? ''} - ${
+          responseDetails?.duration ?? '?'
+        }ms)`,
+      )}`.replace(/\n\s+/g, ''),
     };
 
     console.info(event.message);
