@@ -2,8 +2,6 @@
 import { HttpRequestMethod } from '@srclaunch/types';
 import { NextFunction, Request, Response } from 'express';
 import { DateTime } from 'luxon';
-import morgan from 'morgan';
-
 import { Logger } from './logger';
 
 const getActualRequestDurationInMilliseconds = (start: [number, number]) => {
