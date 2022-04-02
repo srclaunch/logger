@@ -5,7 +5,7 @@ import {
   Model,
   ModelField,
 } from '@srclaunch/types';
-// import { ExceptionObject } from '@srclaunch/exceptions';
+import { ExceptionObject } from '@srclaunch/exceptions';
 
 type CommonEventProps = {
   readonly created: ISO8601String;
@@ -23,9 +23,7 @@ type UserProps = {
   readonly province?: string;
 };
 
-// type CommonExceptionProps = ExceptionObject;
-
-type CommonExceptionProps = {};
+export type CommonExceptionProps = ExceptionObject;
 
 export type CriticalEventProps = CommonExceptionProps;
 

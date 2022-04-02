@@ -32,7 +32,17 @@ export class Logger {
     console.debug({ ...props, ...this.getCommonProps() });
   }
   public exception(props: ExceptionEventProps): void {
-    console.error({ ...props, ...this.getCommonProps() });
+    const message = `[${chalk.blue(props?.created)}]
+    ${props.id}:${props.message} 
+    ${chalk.red(props.cause)}`;
+
+    // TODO: Send this to logging server
+    // const data = {
+    //     message: message,
+    //     ...this.getCommonProps(),
+    //     ...props,
+    //   };
+    console.info(message);
   }
 
   public http(props: HttpEventProps): void {
@@ -54,7 +64,9 @@ export class Logger {
   }
 
   public info(props: InfoEventProps): void {
-    console.info({ ...this.getCommonProps(), message: props });
+    const message = `[${chalk.blue(new Date().toISOString())}] ${props}`;
+
+    console.info(message);
   }
   public warning(props: WarningEventProps): void {
     console.warn({ ...this.getCommonProps(), ...props });
