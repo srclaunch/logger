@@ -56,7 +56,7 @@ export class Logger {
 
     const message = `[${chalk.blue(
       details?.date,
-    )}] ${method}:${resource} ${chalk.red(status?.code)}`.trim();
+    )}] ${method}:${resource} ${chalk.red(status?.code)}`.replace(/\n\s+/g, '');
 
     // TODO: Send this to logging server
     // const data = {
