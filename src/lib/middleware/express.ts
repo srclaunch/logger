@@ -36,20 +36,8 @@ export function expressLoggerMiddleware(
         method: req.method as HttpRequestMethod,
         resource: req.url,
       },
-      response: {
-        details: {
-          date: now.toISO(),
-          duration: getActualRequestDurationInMilliseconds(start),
-          request: {
-            id: requestId,
-          },
-        },
-        status: {
-          code: res.statusCode,
-        },
-      },
     });
   }
 
-  return next();
+  next();
 }

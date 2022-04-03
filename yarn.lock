@@ -1944,25 +1944,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@srclaunch/exceptions@npm:^0.1.36":
-  version: 0.1.36
-  resolution: "@srclaunch/exceptions@npm:0.1.36"
+"@srclaunch/exceptions@npm:^0.1.41":
+  version: 0.1.41
+  resolution: "@srclaunch/exceptions@npm:0.1.41"
   dependencies:
-    "@srclaunch/logger": ^0.1.32
+    "@srclaunch/logger": ^0.1.41
     luxon: ^2.3.1
     nanoid: ^3.3.2
     serialize-error: ^9.1.1
-  checksum: 607ad53361c8c814f2c13c44b4b9345cf7c535164be1c88def8ee6c01c4ae76345cb2050e06fd43b47475f9ff907f9c64aecf01fc22c6038e636da858e0aeac9
+  checksum: b60c9952f433a135c4bacfd24fa5ac236eaa6b1256d801e3840f819f46b5667f35c74515286407d3edb98562922ffcea031408cb3b5c782cbbe718d99946623d
   languageName: node
   linkType: hard
 
-"@srclaunch/logger@^0.1.26, @srclaunch/logger@^0.1.32, @srclaunch/logger@workspace:.":
+"@srclaunch/logger@^0.1.26, @srclaunch/logger@^0.1.41, @srclaunch/logger@workspace:.":
   version: 0.0.0-use.local
   resolution: "@srclaunch/logger@workspace:."
   dependencies:
     "@srclaunch/cli": ^0.1.92
     "@srclaunch/dx": ^0.1.18
-    "@srclaunch/exceptions": ^0.1.36
+    "@srclaunch/exceptions": ^0.1.41
     "@srclaunch/node-environment": ^0.1.8
     "@srclaunch/types": ^0.1.28
     "@srclaunch/web-environment": ^0.1.9
