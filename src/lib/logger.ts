@@ -107,7 +107,7 @@ export class Logger {
       message: `[${chalk.blue(props.created)}] ${chalk.bold.hex('#ffcc00')(
         `<${requestDetails?.id ?? '?'}> `,
       )}${chalk.yellowBright(
-        `HTTP${status?.code ? `${status.code} ` : ''}`,
+        `HTTP${status?.code ? ` ${status.code} ` : ''}`,
       )} ${chalk.yellow(
         `${method?.toUpperCase()} ${resource} - ${
           responseDetails?.duration ? ` - ${responseDetails?.duration}ms` : ''
