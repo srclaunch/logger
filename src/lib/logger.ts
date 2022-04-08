@@ -109,8 +109,8 @@ export class Logger {
       )}${chalk.yellowBright(
         `HTTP${status?.code ? ` ${status.code} ` : ''}`,
       )} ${chalk.yellow(
-        `${method?.toUpperCase()} ${resource} - ${
-          responseDetails?.duration ? ` - ${responseDetails?.duration}ms` : ''
+        `${method?.toUpperCase()} ${resource} ${
+          responseDetails?.duration ? `- ${responseDetails?.duration}ms` : ''
         }`,
       )}`.replace(/\n\s+/g, ''),
     };
