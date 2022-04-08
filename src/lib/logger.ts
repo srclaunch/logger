@@ -106,10 +106,12 @@ export class Logger {
       ...eventArgs,
       message: `[${chalk.blue(props.created)}] ${chalk.bold.hex('#ffcc00')(
         `<${requestDetails?.id ?? '?'}> `,
-      )}${chalk.yellowBright(`HTTP ${status?.code}`)} ${chalk.yellow(
+      )}${chalk.yellowBright(
+        `HTTP${status?.code ? `${status.code} ` : ''}`,
+      )} ${chalk.yellow(
         `${method?.toUpperCase()} ${resource} - ${
-          responseDetails?.duration ?? '?'
-        }ms`,
+          responseDetails?.duration ? ` - ${responseDetails?.duration}ms` : ''
+        }`,
       )}`.replace(/\n\s+/g, ''),
     };
 
