@@ -100,19 +100,23 @@ export class Logger {
     const { status, details: responseDetails } = response ?? {};
 
     const props = this.getCommonProps();
-
+    const timeStamp = chalk.hex('#00ccff')(`[${props.created}]`);
+    const requestId = chalk.bold.hex('#ffcc00')(
+      `<${requestDetails?.id ?? '?'}>`,
+    );
+    const requestMethod =
+      status?.code === 200
+        ? chalk.hex('#2ECC40')(`${method?.toUpperCase()} ${status?.code}`)
+        : chalk.hex('#FF4136')(`${method?.toUpperCase()} ${status?.code}`);
+    const duration = chalk.grey(`${responseDetails?.duration}ms`);
     const event = {
       ...props,
       ...eventArgs,
-      message: `[${chalk.blue(props.created)}] ${chalk.bold.hex('#ffcc00')(
-        `<${requestDetails?.id ?? '?'}> `,
-      )}${chalk.yellowBright(
-        `HTTP${status?.code ? ` ${status.code} ` : ''}`,
-      )} ${chalk.yellow(
-        `${method?.toUpperCase()} ${resource} ${
-          responseDetails?.duration ? `- ${responseDetails?.duration}ms` : ''
-        }`,
-      )}`.replace(/\n\s+/g, ''),
+      message:
+        `${timeStamp} ${requestId} ${requestMethod} ${resource} ${duration}`.replace(
+          /\n\s+/g,
+          '',
+        ),
     };
 
     console.info(event.message);

@@ -58,5 +58,5 @@ test('logging HTTP request to console', t => {
     },
   });
 
-  t.truthy(result.message?.includes('HTTP 200'));
+  t.truthy(result.message?.includes('GET 200'));
 });
