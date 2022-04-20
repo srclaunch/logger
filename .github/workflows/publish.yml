@@ -142,9 +142,6 @@ jobs:
       - name: Enable Yarn Berry
         run: yarn set version stable
 
-      - name: Echo version number
-        run: echo "${{ needs.env-vars.outputs.release }}"
-
       - name: Allow private package registry access
         id: allow-private-package-registry-access
         run: |
