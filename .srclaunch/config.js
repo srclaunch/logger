@@ -11,11 +11,12 @@ export default {
   description: 'Logging utilties',
   type: ProjectType.Library,
   build: {
-    formats: [BuildFormat.ESM, BuildFormat.CJS],
+    bundle: {
+      exclude: ['chalk'],
+    },
+    formats: [BuildFormat.ESM, BuildFormat.UMD],
     platform: BuildPlatform.Node,
-    sourcemap: true,
-    splitting: false,
     target: BuildTarget.ESNext,
-    tool: BuildTool.ESBuild,
+    tool: BuildTool.Vite,
   },
 };
