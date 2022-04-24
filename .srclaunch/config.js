@@ -25,7 +25,7 @@ export default {
       reporters: [TestReporter.Lcov, TestReporter.JSONSummary],
     },
     files: {
-      include: ['src/**/*.test.{js,jsx,ts,tsx}'],
+      include: ['src/**/*.test.ts'],
     },
     verbose: true,
   },
