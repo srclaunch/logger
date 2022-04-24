@@ -4,6 +4,7 @@ import {
   BuildTarget,
   BuildTool,
   ProjectType,
+  TestReporter,
 } from '@srclaunch/types';
 
 export default {
@@ -20,8 +21,11 @@ export default {
     tool: BuildTool.Vite,
   },
   test: {
+    coverage: {
+      reporters: [TestReporter.Lcov, TestReporter.JSONSummary],
+    },
     files: {
-      include: ['src/tests/logger.test.ts'],
+      include: ['src/**/*.test.{js,jsx,ts,tsx}'],
     },
     verbose: true,
   },
