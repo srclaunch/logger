@@ -19,4 +19,10 @@ export default {
     target: BuildTarget.ESNext,
     tool: BuildTool.Vite,
   },
+  test: {
+    files: {
+      include: ['src/tests/logger.test.ts'],
+    },
+    verbose: true,
+  },
 };
