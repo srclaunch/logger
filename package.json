@@ -27,7 +27,6 @@
   },
   "scripts": {
     "build": "yarn srclaunch build",
-    "add-changeset": "yarn srclaunch changesets add --message -- $1",
     "qr": "yarn build && yarn srclaunch changesets add --message \"Quick release - patch\" && yarn srclaunch release",
     "release": "yarn test:coverage && yarn srclaunch release",
     "test": "yarn srclaunch test",
@@ -36,11 +35,11 @@
     "yui": "yarn upgrade-interactive"
   },
   "devDependencies": {
-    "@srclaunch/cli": "^0.1.259",
+    "@srclaunch/cli": "^0.1.268",
     "@srclaunch/dx": "^0.1.43",
-    "@srclaunch/node-environment": "^0.1.8",
-    "@srclaunch/types": "^0.1.94",
-    "@srclaunch/web-environment": "^0.1.9",
+    "@srclaunch/node-environment": "^0.1.11",
+    "@srclaunch/types": "^0.1.97",
+    "@srclaunch/web-environment": "^0.1.12",
     "@types/express": "^4.17.13",
     "@types/jest": "^27.4.1",
     "@types/luxon": "^2.3.1",
