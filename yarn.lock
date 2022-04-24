@@ -1899,9 +1899,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@srclaunch/cli@npm:^0.1.251":
-  version: 0.1.251
-  resolution: "@srclaunch/cli@npm:0.1.251"
+"@srclaunch/cli@npm:^0.1.253":
+  version: 0.1.253
+  resolution: "@srclaunch/cli@npm:0.1.253"
   dependencies:
     "@srclaunch/exceptions": ^0.1.48
     "@vitejs/plugin-react": ^1.3.1
@@ -1931,7 +1931,7 @@ __metadata:
     vite: ^2.9.5
   bin:
     srclaunch: dist/index.mjs
-  checksum: b5c313234e146cf3a3dd92afc21b3d6d5987148bd5db13b7c7a63ff80ba476e7205dc6bff811a655be9e53ba5df11e6bfaedfd44a97b7e829d59c0daa418b554
+  checksum: 7e0bcad6c848580ee3bacbc22f25f2b561e0bc094e2c1f6c940efc67a13c5be54d14a70d6cc6f791afb92e0c2d91a8a10e78c04eec8ea1457ff2f8ea7dcb4a36
   languageName: node
   linkType: hard
 
@@ -1957,7 +1957,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@srclaunch/logger@workspace:."
   dependencies:
-    "@srclaunch/cli": ^0.1.251
+    "@srclaunch/cli": ^0.1.253
     "@srclaunch/dx": ^0.1.43
     "@srclaunch/node-environment": ^0.1.8
     "@srclaunch/types": ^0.1.94
