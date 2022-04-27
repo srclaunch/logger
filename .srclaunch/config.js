@@ -14,13 +14,15 @@ export default {
   type: ProjectType.Library,
   build: {
     bundle: {
-      exclude: ['chalk'],
-      optimize: ['chalk'],
+      exclude: ['#ansi-styles', '#supports-color'],
     },
     formats: [BuildFormat.ESM, BuildFormat.UMD],
     platform: BuildPlatform.Node,
     target: BuildTarget.ESNext,
     tool: BuildTool.Vite,
+  },
+  optimize: {
+    include: ['chalk'],
   },
   test: {
     coverage: {
