@@ -5,6 +5,7 @@ import {
   BuildTool,
   ProjectType,
   TestReporter,
+  TestTool,
 } from '@srclaunch/types';
 
 export default {
@@ -27,6 +28,7 @@ export default {
     files: {
       include: ['src/**/*.test.ts'],
     },
+    tool: TestTool.Ava,
     verbose: true,
   },
 };
