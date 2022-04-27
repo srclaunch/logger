@@ -15,6 +15,7 @@ export default {
   build: {
     bundle: {
       exclude: ['chalk'],
+      optimize: ['chalk'],
     },
     formats: [BuildFormat.ESM, BuildFormat.UMD],
     platform: BuildPlatform.Node,
