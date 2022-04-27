@@ -13,7 +13,7 @@ export default {
   description: 'Logging utilties',
   type: ProjectType.Library,
   build: {
-    formats: [BuildFormat.ESM, BuildFormat.CJS],
+    formats: [BuildFormat.ESM, BuildFormat.UMD],
     platform: BuildPlatform.Browser,
     target: BuildTarget.ESNext,
     tool: BuildTool.Vite,
