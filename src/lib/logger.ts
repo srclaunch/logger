@@ -1,5 +1,5 @@
 import { Environment, LogLevel } from '@srclaunch/types';
-import chalk from 'chalk';
+import { Chalk } from 'chalk';
 import { DateTime } from 'luxon';
 // import { getBrowserEnvironment, getNodeEnvironment } from '@srclaunch/environment';
 import { nanoid } from 'nanoid';
@@ -17,6 +17,8 @@ import {
   WarningEventProps,
 } from '../types/events';
 import { LoggerConfig } from '../types/index';
+import pc from 'picocolors';
+
 // import { LogLevel } from '../types/levels';
 // import { getCloudwatchTransport } from './cloudwatch.js';
 
@@ -48,9 +50,9 @@ export class Logger {
     const event = {
       ...props,
       ...eventArgs,
-      message: `[${chalk.blue(props.created)}]
+      message: `[${pc.blue(props.created)}]
       ${id}:${message} 
-      ${chalk.bgRed.white(cause)}`,
+      ${pc.bgRed(pc.white(cause?.name))}`,
     };
 
     console.error(event.message);
@@ -64,9 +66,9 @@ export class Logger {
     const event = {
       ...props,
       ...eventArgs,
-      message: `[${chalk.blue(props.created)}]
+      message: `[${pc.blue(props.created)}]
       ${message} 
-      ${chalk.white(data)}`,
+      ${pc.white(data)}`,
       ...this.getCommonProps(),
     };
 
@@ -85,9 +87,9 @@ export class Logger {
     const event = {
       ...props,
       ...eventArgs,
-      message: `[${chalk.blue(props.created)}]
+      message: `[${pc.blue(props.created)}]
       ${id}:${message} 
-      ${chalk.red(cause)}`,
+      ${pc.red(cause?.name)}`,
     };
 
     console.error(event.message);
@@ -100,15 +102,13 @@ export class Logger {
     const { status, details: responseDetails } = response ?? {};
 
     const props = this.getCommonProps();
-    const timeStamp = chalk.hex('#00ccff')(`[${props.created}]`);
-    const requestId = chalk.bold.hex('#ffcc00')(
-      `<${requestDetails?.id ?? '?'}>`,
-    );
+    const timeStamp = pc.white(`[${props.created}]`);
+    const requestId = pc.bold(pc.yellow(`<${requestDetails?.id ?? '?'}>`));
     const requestMethod =
       status?.code === 200
-        ? chalk.hex('#2ECC40')(`${method?.toUpperCase()} ${status?.code}`)
-        : chalk.hex('#FF4136')(`${method?.toUpperCase()} ${status?.code}`);
-    const duration = chalk.grey(`${responseDetails?.duration}ms`);
+        ? pc.blue(`${method?.toUpperCase()} ${status?.code}`)
+        : pc.gray(`${method?.toUpperCase()} ${status?.code}`);
+    const duration = pc.gray(`${responseDetails?.duration}ms`);
     const event = {
       ...props,
       ...eventArgs,
@@ -129,7 +129,7 @@ export class Logger {
 
     const event = {
       ...props,
-      message: `[${chalk.blue(props.created)}] ${message}`,
+      message: `[${pc.blue(props.created)}] ${message}`,
     };
 
     console.info(event.message);
@@ -148,9 +148,9 @@ export class Logger {
     const event = {
       ...props,
       ...eventArgs,
-      message: `[${chalk.blue(props.created)}]
+      message: `[${pc.blue(props.created)}]
       ${id}:${message} 
-      ${chalk.yellow(cause)}`,
+      ${pc.yellow(message)}`,
     };
 
     console.warn(event);

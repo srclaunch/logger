@@ -32,7 +32,7 @@ export type ExceptionEventProps = CommonEventProps & ExceptionObject;
 
 export type DebugEventProps = CommonEventProps & {
   readonly message: string;
-  readonly data?: unknown;
+  readonly data?: any;
 };
 
 export type HttpEventProps = CommonEventProps & {

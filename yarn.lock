@@ -1908,9 +1908,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@srclaunch/cli@npm:^0.1.305":
-  version: 0.1.305
-  resolution: "@srclaunch/cli@npm:0.1.305"
+"@srclaunch/cli@npm:^0.1.307":
+  version: 0.1.307
+  resolution: "@srclaunch/cli@npm:0.1.307"
   dependencies:
     "@rauschma/stringio": ^1.4.0
     "@srclaunch/exceptions": ^0.1.54
@@ -1945,7 +1945,7 @@ __metadata:
     ansi-styles: "*"
   bin:
     srclaunch: dist/index.mjs
-  checksum: d268a2221f287f066314d4f81746d9e176bd88375e99b4ce3e93a44d7096a18e5974383e3c08e4dfa5ea53d67524650c5ac1c83c9deca53cbfbeeb91fd47c2e8
+  checksum: f79e50242b9f5fc7a4da51f08dd426d74e4ade900b191679fced1a376b5a021fec9e91e3b01d7f75eb52db79d93863c9fa2f16481a44c83a748e609195864011
   languageName: node
   linkType: hard
 
@@ -1972,7 +1972,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@srclaunch/logger@workspace:."
   dependencies:
-    "@srclaunch/cli": ^0.1.305
+    "@srclaunch/cli": ^0.1.307
     "@srclaunch/dx": ^0.1.44
     "@srclaunch/node-environment": ^0.1.12
     "@srclaunch/types": ^0.1.99
@@ -1986,7 +1986,6 @@ __metadata:
     ansi-styles: ^6.1.0
     ava: ^4.2.0
     c8: ^7.11.2
-    chalk: ^5.0.1
     eslint: ^8.14.0
     eslint-config-prettier: ^8.5.0
     eslint-config-react-app: ^7.0.1
@@ -2012,6 +2011,7 @@ __metadata:
     jest: ^27.5.1
     luxon: ^2.3.2
     nanoid: ^3.3.3
+    picocolors: ^1.0.0
     prettier: ^2.6.2
     standard-version: ^9.3.2
     stylelint: ^14.8.0

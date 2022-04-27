@@ -25,6 +25,13 @@
       "require": "./dist/index.umd.js"
     }
   },
+  "imports": {
+    "#ansi-styles": "./node_modules/chalk/source/vendor/ansi-styles/index.js",
+    "#supports-color": {
+      "node": "./node_modules/chalk/source/vendor/supports-color/index.js",
+      "default": "./node_modules/chalk/source/vendor/supports-color/browser.js"
+    }
+  },
   "scripts": {
     "build": "yarn srclaunch build",
     "qr": "yarn build && yarn srclaunch changesets add --message \"Quick release - patch\" && yarn srclaunch release",
@@ -35,7 +42,7 @@
     "yui": "yarn upgrade-interactive"
   },
   "devDependencies": {
-    "@srclaunch/cli": "^0.1.305",
+    "@srclaunch/cli": "^0.1.307",
     "@srclaunch/dx": "^0.1.44",
     "@srclaunch/node-environment": "^0.1.12",
     "@srclaunch/types": "^0.1.99",
@@ -85,9 +92,9 @@
   },
   "dependencies": {
     "ansi-styles": "^6.1.0",
-    "chalk": "^5.0.1",
     "luxon": "^2.3.2",
-    "nanoid": "^3.3.3"
+    "nanoid": "^3.3.3",
+    "picocolors": "^1.0.0"
   },
   "ava": {
     "extensions": {

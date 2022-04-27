@@ -16,7 +16,7 @@ export default {
     formats: [BuildFormat.ESM, BuildFormat.CJS],
     platform: BuildPlatform.Browser,
     target: BuildTarget.ESNext,
-    tool: BuildTool.ESBuild,
+    tool: BuildTool.Vite,
   },
 
   test: {
