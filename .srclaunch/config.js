@@ -13,23 +13,15 @@ export default {
   description: 'Logging utilties',
   type: ProjectType.Library,
   build: {
-    bundle: {
-      exclude: ['#ansi-styles', '#supports-color'],
-    },
-    formats: [BuildFormat.ESM, BuildFormat.UMD],
-    platform: BuildPlatform.Node,
+    formats: [BuildFormat.ESM, BuildFormat.CJS],
+    platform: BuildPlatform.Browser,
     target: BuildTarget.ESNext,
-    tool: BuildTool.Vite,
+    tool: BuildTool.ESBuild,
   },
-  optimize: {
-    include: ['chalk'],
-  },
+
   test: {
     coverage: {
       reporters: [TestReporter.Lcov, TestReporter.JSONSummary],
-    },
-    files: {
-      include: ['src/**/*.test.ts'],
     },
     tool: TestTool.Ava,
     verbose: true,
