@@ -96,5 +96,6 @@
     "nodeArguments": [
       "--loader=ts-node/esm"
     ]
-  }
+  },
+  "packageManager": "yarn@3.2.0"
 }
