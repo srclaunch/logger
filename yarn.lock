@@ -1926,7 +1926,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@srclaunch/cli@npm:^0.1.307":
+"@srclaunch/cli@npm:^0.1.332":
   version: 0.1.332
   resolution: "@srclaunch/cli@npm:0.1.332"
   dependencies:
@@ -1988,13 +1988,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@srclaunch/logger@workspace:."
   dependencies:
-    "@srclaunch/cli": ^0.1.307
+    "@srclaunch/cli": ^0.1.332
     "@srclaunch/dx": ^0.1.44
     "@srclaunch/node-environment": ^0.1.12
-    "@srclaunch/types": ^0.1.99
+    "@srclaunch/types": ^0.1.115
     "@srclaunch/web-environment": ^0.1.15
     "@types/express": ^4.17.13
-    "@types/jest": ^27.4.1
     "@types/luxon": ^2.3.1
     "@types/morgan": ^1.9.3
     "@typescript-eslint/eslint-plugin": ^5.21.0
@@ -2023,7 +2022,6 @@ __metadata:
     eslint-plugin-sort-requires: ^2.1.0
     eslint-plugin-testing-library: ^5.3.1
     eslint-plugin-unicorn: ^42.0.0
-    jest: ^27.5.1
     luxon: ^2.3.2
     nanoid: ^3.3.3
     picocolors: ^1.0.0
@@ -2048,7 +2046,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@srclaunch/types@npm:^0.1.99":
+"@srclaunch/types@npm:^0.1.115":
   version: 0.1.115
   resolution: "@srclaunch/types@npm:0.1.115"
   checksum: e4cfdc517bee15251b9e1f516cc9a3151cad5dbb44f781fa8b3e5f886619cc3332826c5d593f3f3a09aae15080fd7986fbe0dec2fa1748c82252df4a2231e5e7
@@ -2227,16 +2225,6 @@ __metadata:
   dependencies:
     "@types/istanbul-lib-report": "*"
   checksum: f1ad54bc68f37f60b30c7915886b92f86b847033e597f9b34f2415acdbe5ed742fa559a0a40050d74cdba3b6a63c342cac1f3a64dba5b68b66a6941f4abd7903
-  languageName: node
-  linkType: hard
-
-"@types/jest@npm:^27.4.1":
-  version: 27.4.1
-  resolution: "@types/jest@npm:27.4.1"
-  dependencies:
-    jest-matcher-utils: ^27.0.0
-    pretty-format: ^27.0.0
-  checksum: 5184f3eef4832d01ee8f59bed15eec45ccc8e29c724a5e6ce37bf74396b37bdf04f557000f45ba4fc38ae6075cf9cfcce3d7a75abc981023c61ceb27230a93e4
   languageName: node
   linkType: hard
 
@@ -7205,7 +7193,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-matcher-utils@npm:^27.0.0, jest-matcher-utils@npm:^27.5.1":
+"jest-matcher-utils@npm:^27.5.1":
   version: 27.5.1
   resolution: "jest-matcher-utils@npm:27.5.1"
   dependencies:
@@ -9124,7 +9112,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pretty-format@npm:^27.0.0, pretty-format@npm:^27.5.1":
+"pretty-format@npm:^27.5.1":
   version: 27.5.1
   resolution: "pretty-format@npm:27.5.1"
   dependencies:
