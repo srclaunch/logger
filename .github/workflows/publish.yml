@@ -76,6 +76,7 @@ jobs:
             dist
             package.json
             README.md
+            LICENSE.md
 
   test:
     name: Run tests
@@ -147,19 +148,6 @@ jobs:
         with:
           node-version: '16.x'
           cache: 'yarn'
-
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
-
-      - uses: actions/cache@v3
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: |
-            ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
 
       - name: Enable corepack
         run: corepack enable
