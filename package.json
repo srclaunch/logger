@@ -22,7 +22,7 @@
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
-      "require": "./dist/index.umd.js"
+      "require": "./dist/index.umd.cjs"
     }
   },
   "scripts": {
@@ -85,15 +85,6 @@
     "luxon": "^2.3.2",
     "nanoid": "^3.3.3",
     "picocolors": "^1.0.0"
-  },
-  "ava": {
-    "extensions": {
-      "js": true,
-      "ts": "module"
-    },
-    "nodeArguments": [
-      "--loader=ts-node/esm"
-    ]
   },
   "packageManager": "yarn@3.2.0"
 }
