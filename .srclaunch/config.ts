@@ -3,16 +3,19 @@ import {
   BuildPlatform,
   BuildTarget,
   BuildTool,
+  CodeFormatterTool,
+  CodeLinterTool,
   License,
-  PackageAccess,
   Project,
   ProjectType,
+  PublishAccess,
+  StaticTypingTool,
   TestReporter,
   TestTool,
   UniversalPackage,
 } from '@srclaunch/types';
 
-export default {
+const config: Project = {
   name: '@srclaunch/logger',
   description: 'Logging utilties',
   type: ProjectType.Library,
@@ -22,17 +25,23 @@ export default {
     target: BuildTarget.ESNext,
     tool: BuildTool.Vite,
   },
+  environments: {
+    development: {
+      formatters: [CodeFormatterTool.Prettier],
+      linters: [CodeLinterTool.ESLint],
+      staticTyping: [StaticTypingTool.TypeScript],
+    },
+  },
   release: {
-    package: {
-      publish: {
-        access: PackageAccess.Public,
-        license: License.MIT,
-        registry: 'https://registry.npmjs.org/',
-      },
+    publish: {
+      access: PublishAccess.Public,
+      license: License.MIT,
+      registry: 'https://registry.npmjs.org/',
     },
   },
   requirements: {
     node: '>=16',
+    yarn: '>=3.2.0',
     packages: [
       UniversalPackage.NanoID,
       UniversalPackage.Luxon,
@@ -50,4 +59,6 @@ export default {
     },
     tool: TestTool.Ava,
   },
-} as Project;
+};
+
+export default config;
