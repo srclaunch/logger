@@ -3,6 +3,8 @@ import {
   BuildPlatform,
   BuildTarget,
   BuildTool,
+  License,
+  PackageAccess,
   Project,
   ProjectType,
   TestReporter,
@@ -19,6 +21,15 @@ export default {
     platform: BuildPlatform.Browser,
     target: BuildTarget.ESNext,
     tool: BuildTool.Vite,
+  },
+  release: {
+    package: {
+      publish: {
+        access: PackageAccess.Public,
+        license: License.MIT,
+        registry: 'https://registry.npmjs.org/',
+      },
+    },
   },
   requirements: {
     node: '>=16',
