@@ -7,7 +7,7 @@ engines:
   node: '>=16'
   yarn: '>=3.2.0'
 publishConfig:
-  access: private
+  access: public
   registry: https://registry.npmjs.org/
 type: module
 main: ./dist/index.mjs
