@@ -1,6 +1,5 @@
-
-# dotenv file
-.env
+# dotenv files
+*.env*
 
 # Mac OS artifacts
 .DS_Store
