@@ -28,7 +28,7 @@
   },
   "scripts": {
     "build": "yarn srclaunch build",
-    "qr": "yarn srclaunch changesets add --message \"Quick release\" && yarn srclaunch release --push",
+    "qr": "yarn srclaunch changesets add --files \".\" --message \"Quick release\" --type \"chore\" && yarn srclaunch release --push",
     "release": "yarn srclaunch release",
     "test": "yarn srclaunch test",
     "test:watch": "yarn srclaunch test --watch",
@@ -47,7 +47,6 @@
     "c8": "7.11.2",
     "eslint": "8.14.0",
     "eslint-config-prettier": "8.5.0",
-    "eslint-config-stylelint": "15.1.0",
     "eslint-import-resolver-typescript": "2.7.1",
     "eslint-plugin-eslint-comments": "3.2.0",
     "eslint-plugin-functional": "4.2.1",
@@ -62,11 +61,6 @@
     "eslint-plugin-unicorn": "42.0.0",
     "prettier": "2.6.2",
     "standard-version": "9.3.2",
-    "stylelint": "14.8.2",
-    "stylelint-config-idiomatic-order": "8.1.0",
-    "stylelint-config-prettier": "9.0.3",
-    "stylelint-config-recommended": "7.0.0",
-    "stylelint-order": "5.0.0",
     "typescript": "4.6.4"
   },
   "dependencies": {

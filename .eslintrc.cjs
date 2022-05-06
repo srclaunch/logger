@@ -1,13 +1,1 @@
-const base = require('@srclaunch/dx/.eslintrc');
-
-module.exports = {
-  ...base,
-  overrides: [
-    {
-      rules: {
-        'no-console': 'off',
-        'functional/prefer-readonly-type': 'off',
-      },
-    },
-  ],
-};
+"const base = require('@srclaunch/dx/.eslintrc');\n\nmodule.exports = {\n  ...base\n};"
