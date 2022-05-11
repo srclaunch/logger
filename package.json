@@ -3,7 +3,7 @@
   "description": "Logging utilties",
   "author": "Steven Bennett <steven@srclaunch.com>",
   "license": "MIT",
-  "version": "0.1.88",
+  "version": "0.1.89",
   "engines": {
     "node": ">=16",
     "yarn": ">=3.2.0"
